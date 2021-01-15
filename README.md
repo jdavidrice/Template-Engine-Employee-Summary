@@ -2,7 +2,7 @@
 [![GitHub license](https://img.shields.io/github/license/jdavidrice/Template-Engine-Employee-Summary)](https://github.com/jdavidrice/Template-Engine-Employee-Summary/blob/master/LICENSE)
 ## Description 
 
-This application is a software engineering team generator command line application. The application will prompt the user for information about the team manager and then information about the team members. The user can input any number of team members, and they may be a mix of engineers and interns. This project must also pass all unit tests. When the user has completed building the team, the application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user.
+This application is a software engineering team generator that runs from the command line. The application will prompt the user for information about the team manager and then information about the team members. The user can input any number of team members, and they may be a mix of engineers and interns. This project must also pass all unit tests. When the user has completed building the team, the application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user.
 
 ## Table of Contents
 
