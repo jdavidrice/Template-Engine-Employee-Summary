@@ -15,6 +15,10 @@ const render = require("./lib/htmlRenderer");
 const promptUser = () => {
   return inquirer.prompt([
     {
+      name: "prefix",
+      message: "Hello. Please answer the following questions to input a new employee."
+    },
+    {
       type: "list",
       name: "role",
       message: "What is the employee's role?",
@@ -50,19 +54,21 @@ const promptUser = () => {
       name: "school",
       message: "What is the intern's school?",
     },
+    {
+      name: "suffix",
+      message: "Successfully wrote to team.html."
+    },
   ]);
 };
 
 const init = async () => {
-  console.log("Hello. Please answer the following questions to input a new employee.");
   try {
-    const render = await promptUser();
+    const answers = await promptUser();
 
-    const html = [];
+    const data = writeFileAsync();
 
-    await writeFileAsync("team.html", html);
+    await render(answers);
 
-    console.log("Successfully wrote to team.html");
   } catch (err) {
     console.log(err);
   }
