@@ -4,7 +4,6 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-const util = require("util");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -13,8 +12,29 @@ const render = require("./lib/htmlRenderer");
 
 let employees = [];
 
+const addEmployee = () => {
+  inquirer
+    .prompt(Questions)
+    .then((answers) => {
+      switch (answers.title) {
+        case 'Manager':
+          employees.push(new Manager(answers.name, answers.id, answers.email, answers.officeNumber));
+          break;
+        case 'Engineer':
+          employees.push(new Engineer(answers.name, answers.id, answers.email, answers.github));
+          break;
+        case 'Intern':
+          employees.push(new Intern(answers.name, answers.id, answers.email, answers.school));
+          break;
+      }
+
+    });
+}
+addEmployee();
+
 const promptUser = async () => {
-  const answers = await inquirer.prompt([
+  const answers = await inquirer.prompt(
+  [
     {
       type: "list",
       name: "role",
@@ -100,7 +120,6 @@ const promptUser = async () => {
       message: "Would you like to enter another new Employee?",
     },
   ]);
-  console.log(answers);
 };
 promptUser();
 
