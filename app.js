@@ -4,11 +4,72 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+const util = require("util");
+const writeFileAsync = util.promisify(fs.writeFile);
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+
+const promptUser = () => {
+  return inquirer.prompt([
+    {
+      type: "list",
+      name: "role",
+      message: "What is the employee's role?",
+      choices: ["Manager", "Engineer", "Intern"],
+    },
+    {
+      type: "input",
+      name: "name",
+      message: "What is the employee's name?",
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is the employee's email?",
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "What is the employee's id?",
+    },
+    {
+      type: "input",
+      name: "office",
+      message: "What is the manager's office number?",
+    },
+    {
+      type: "input",
+      name: "github",
+      message: "What is the engineer's github username?",
+    },
+    {
+      type: "input",
+      name: "school",
+      message: "What is the intern's school?",
+    },
+  ]);
+};
+
+const init = async () => {
+  console.log("Hello. Please answer the following questions to input a new employee.");
+  try {
+    const render = await promptUser();
+
+    const html = [];
+
+    await writeFileAsync("team.html", html);
+
+    console.log("Successfully wrote to team.html");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+init();
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -20,7 +81,7 @@ const render = require("./lib/htmlRenderer");
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
+// `output` folder. You can use the variable `outputPath` above to target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
 
