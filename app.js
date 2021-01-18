@@ -15,10 +15,6 @@ const render = require("./lib/htmlRenderer");
 const promptUser = () => {
   return inquirer.prompt([
     {
-      name: "prefix",
-      message: "Hello. Please answer the following questions to input a new employee."
-    },
-    {
       type: "list",
       name: "role",
       message: "What is the employee's role?",
@@ -43,39 +39,42 @@ const promptUser = () => {
       type: "input",
       name: "office",
       message: "What is the manager's office number?",
+      when: (answers) => answers.role === "Manager",
     },
     {
       type: "input",
       name: "github",
       message: "What is the engineer's github username?",
+      when: (answers) => answers.role === "Engineer",
     },
     {
       type: "input",
       name: "school",
       message: "What is the intern's school?",
+      when: (answers) => answers.role === "Intern",
     },
-    {
-      name: "suffix",
-      message: "Successfully wrote to team.html."
-    },
-  ]);
+  ])
+    .then((answers) => {
+      console.log(answers);
+  })
 };
+promptUser();
 
-const init = async () => {
-  try {
-    const answers = await promptUser();
+// const init = async () => {
+//   try {
+//     const answers = await promptUser();
 
-    const data = writeFileAsync();
+//     const data = writeFileAsync();
 
-    await render(answers);
+//     await render(answers);
 
-  } catch (err) {
-    console.log(err);
-  }
-};
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 
-init();
+// init();
 
 
 // Write code to use inquirer to gather information about the development team members,
