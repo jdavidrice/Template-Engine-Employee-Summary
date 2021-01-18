@@ -5,58 +5,99 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 const util = require("util");
-const writeFileAsync = util.promisify(fs.writeFile);
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-const promptUser = () => {
-  return inquirer.prompt([
+const promptUser = async () => {
+  const answers_6 = await inquirer.prompt([
+    {
+      type: "confirm",
+      name: "new",
+      message: "Would you like to enter a new Employee?",
+    },
     {
       type: "list",
       name: "role",
-      message: "What is the employee's role?",
+      message: "What is the Employee's role?",
       choices: ["Manager", "Engineer", "Intern"],
     },
     {
       type: "input",
       name: "name",
-      message: "What is the employee's name?",
+      message: "What is the Manager's name?",
+      when: (answers_1) => answers_1.role === "Manager",
+    },
+    {
+      type: "input",
+      name: "name",
+      message: "What is the Engineer's name?",
+      when: (answers_3) => answers_3.role === "Engineer",
+    },
+    {
+      type: "input",
+      name: "name",
+      message: "What is the Intern's name?",
+      when: (answers_5) => answers_5.role === "Intern",
     },
     {
       type: "input",
       name: "email",
-      message: "What is the employee's email?",
+      message: "What is the Manager's email?",
+      when: (answers_1) => answers_1.role === "Manager",
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is the Engineer's email?",
+      when: (answers_3) => answers_3.role === "Engineer",
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is the Intern's email?",
+      when: (answers_5) => answers_5.role === "Intern",
     },
     {
       type: "input",
       name: "id",
-      message: "What is the employee's id?",
+      message: "What is the Manager's id?",
+      when: (answers_1) => answers_1.role === "Manager",
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "What is the Engineer's id?",
+      when: (answers_3) => answers_3.role === "Engineer",
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "What is the Intern's id?",
+      when: (answers_5) => answers_5.role === "Intern",
     },
     {
       type: "input",
       name: "office",
-      message: "What is the manager's office number?",
-      when: (answers) => answers.role === "Manager",
+      message: "What is the Manager's office number?",
+      when: (answers_1) => answers_1.role === "Manager",
     },
     {
       type: "input",
       name: "github",
-      message: "What is the engineer's github username?",
-      when: (answers) => answers.role === "Engineer",
+      message: "What is the Engineer's Github username?",
+      when: (answers_3) => answers_3.role === "Engineer",
     },
     {
       type: "input",
       name: "school",
-      message: "What is the intern's school?",
-      when: (answers) => answers.role === "Intern",
+      message: "What is the Intern's school?",
+      when: (answers_5) => answers_5.role === "Intern",
     },
-  ])
-    .then((answers) => {
-      console.log(answers);
-  })
+  ]);
+  console.log(answers_6);
 };
 promptUser();
 
