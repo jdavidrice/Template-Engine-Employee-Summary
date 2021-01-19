@@ -6,14 +6,14 @@ This application is a software engineering team generator that runs from the com
 
 ## Table of Contents
 
-* [Description](#Description)
-* [Table of Contents](#Table-of-Contents)
-* [Installation](#Installation)
-* [Usage](#Usage)
-* [License](#License)
-* [Contributing](#Contributing)
-* [Tests](#Tests)
-* [Questions](#Questions)
+*   [Description](#Description)
+*   [Table of Contents](#Table-of-Contents)
+*   [Installation](#Installation)
+*   [Usage](#Usage)
+*   [License](#License)
+*   [Contributing](#Contributing)
+*   [Tests](#Tests)
+*   [Questions](#Questions)
 
 ## Installation
 
@@ -22,19 +22,21 @@ This application is a software engineering team generator that runs from the com
 3. Install the Node Project Manager [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 4. Install the [Inquirer package](https://www.npmjs.com/package/inquirer) by using the following command:
 ```
-npm i inquirer
+$ npm install inquirer
 ```
-* [Return to Top](#Template-Engine-Employee-Summary)
+*   [Return to Top](#Template-Engine-Employee-Summary)
 
 ## Usage 
 
 1. Use the following command to start the process:
 ```
-node index.js
+$ node app.js
 ```
 2. Answer the question prompts as completely as possible. 
 
-* [Return to Top](#Template-Engine-Employee-Summary)
+3. Your generated team.html file will be created in the output folder. 
+
+*   [Return to Top](#Template-Engine-Employee-Summary)
 
 ## Questions
 
@@ -44,7 +46,7 @@ Please contact me at the email address listed below with any questions about thi
 
 [Repository Owner GitHub Profile](https://github.com/jdavidrice)
 
-* [Return to Top](#Template-Engine-Employee-Summary)
+*   [Return to Top](#Template-Engine-Employee-Summary)
 
 ## License
 
@@ -70,7 +72,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-* [Return to Top](#Template-Engine-Employee-Summary)
+*   [Return to Top](#Template-Engine-Employee-Summary)
 
 ## Contributing
 
@@ -80,6 +82,12 @@ SOFTWARE.
 
 ## Tests
 
-No tests
-
-* [Return to Top](#Template-Engine-Employee-Summary)
+The test folder contains four files that can be used to test the functionality of the Employee.js, Manager.js, Engineer.js, and Intern.js files. To run these tests, install the [Jest NPM Package](https://www.npmjs.com/package/jest) by using the following command:
+```
+$ npm install jest
+```
+Then, run the tests using the following command:
+```
+$ npm run test
+``` 
+*   [Return to Top](#Template-Engine-Employee-Summary)

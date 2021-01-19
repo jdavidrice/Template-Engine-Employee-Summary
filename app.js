@@ -14,13 +14,12 @@ const render = require("./lib/htmlRenderer");
 let employees = [];
 
 const promptUser = async () => {
-  const answers = await inquirer.prompt([
-    {
+  const answers = await inquirer.prompt(
+    [{
       type: "list",
       name: "role",
       message: "What is the Employee's role?",
       choices: ["Manager", "Engineer", "Intern"],
-      // when: (answers) => answers.confirm,
     },
     {
       type: "input",
@@ -98,8 +97,8 @@ const promptUser = async () => {
       type: "confirm",
       name: "new",
       message: "Would you like to enter another new Employee?",
-    },
-  ]);
+    }],
+  );
 
   console.log(answers);
 
