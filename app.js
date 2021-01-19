@@ -100,8 +100,10 @@ const promptUser = async () => {
       message: "Would you like to enter another new Employee?",
     },
   ]);
+
   console.log(answers);
 
+  function chooseEmployee() {
   if (answers.role === "Engineer") {
     const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
     employees.push(engineer)
@@ -120,8 +122,10 @@ const promptUser = async () => {
   if (answers.new) {
     return promptUser();
   }
+  }
+  return chooseEmployee();
+  
 };
-
 
 
 const init = async () => {
@@ -129,17 +133,15 @@ const init = async () => {
     await promptUser();
 
     const html = await render(employees);
-    // const data = writeFileAsync();
+    
     fs.writeFileSync(outputPath, html)
 
   } catch (err) {
     console.log(err);
   }
 };
+
 init();
-
-// init();
-
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
