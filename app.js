@@ -101,22 +101,42 @@ const promptUser = async () => {
     },
   ]);
   console.log(answers);
+
+  if (answers.role === "Engineer") {
+    const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+    employees.push(engineer)
+  }
+  else if (answers.role === "Manager") {
+    const manager = new Manager(answers.name, answers.id, answers.email, answers.office)
+    employees.push(manager)
+  }
+  else if (answers.role === "Intern") {
+    const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+    employees.push(intern)
+  }
+  else {
+    throw new Error(`Role type ${answers.role} is not supported.`)
+  }
+  if (answers.new) {
+    return promptUser();
+  }
 };
-promptUser();
 
-// const init = async () => {
-//   try {
-//     const answers = await promptUser();
 
-//     const data = writeFileAsync();
 
-//     await render(answers);
+const init = async () => {
+  try {
+    await promptUser();
 
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+    const html = await render(employees);
+    // const data = writeFileAsync();
+    fs.writeFileSync(outputPath, html)
 
+  } catch (err) {
+    console.log(err);
+  }
+};
+init();
 
 // init();
 
