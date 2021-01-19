@@ -14,6 +14,7 @@ const render = require("./lib/htmlRenderer");
 let employees = [];
 
 const promptUser = async () => {
+  console.log("Hello. Please answer the following questions to add a new Employee.")
   const answers = await inquirer.prompt(
     [{
       type: "list",
@@ -97,7 +98,8 @@ const promptUser = async () => {
       type: "confirm",
       name: "new",
       message: "Would you like to enter another new Employee?",
-    }],
+      }],
+    
   );
 
   console.log(answers);
@@ -122,8 +124,8 @@ const promptUser = async () => {
     return promptUser();
   }
   }
+
   return chooseEmployee();
-  
 };
 
 
@@ -132,6 +134,8 @@ const init = async () => {
     await promptUser();
 
     const html = await render(employees);
+
+    console.log("Your team.html file has been created in the output folder.")
     
     fs.writeFileSync(outputPath, html)
 
