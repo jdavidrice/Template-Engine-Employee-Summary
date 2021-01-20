@@ -13,7 +13,7 @@ const render = require("./lib/htmlRenderer");
 let employees = [];
 
 const promptUser = async () => {
-  console.log("Hello. Please answer the following questions to add a new Employee.")
+  console.log("Hello. Please answer the following questions to add a new Employee.");
   const answers = await inquirer.prompt(
     [{
       type: "list",
@@ -97,31 +97,29 @@ const promptUser = async () => {
       type: "confirm",
       name: "new",
       message: "Would you like to enter another new Employee?",
-      }],
-    
+    }],
+
   );
 
-  console.log(answers);
-
   function chooseEmployee() {
-  if (answers.role === "Engineer") {
-    const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
-    employees.push(engineer)
-  }
-  else if (answers.role === "Manager") {
-    const manager = new Manager(answers.name, answers.id, answers.email, answers.office)
-    employees.push(manager)
-  }
-  else if (answers.role === "Intern") {
-    const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
-    employees.push(intern)
-  }
-  else {
-    throw new Error(`Role type ${answers.role} is not supported.`)
-  }
-  if (answers.new) {
-    return promptUser();
-  }
+    if (answers.role === "Engineer") {
+      const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+      employees.push(engineer);
+    }
+    else if (answers.role === "Manager") {
+      const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
+      employees.push(manager);
+    }
+    else if (answers.role === "Intern") {
+      const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+      employees.push(intern);
+    }
+    else {
+      throw new Error(`Role type ${answers.role} is not supported.`);
+    }
+    if (answers.new) {
+      return promptUser();
+    }
   }
 
   return chooseEmployee();
@@ -135,7 +133,7 @@ const init = async () => {
     const html = await render(employees);
 
     console.log("Your team.html file has been created in the output folder.")
-    
+
     fs.writeFileSync(outputPath, html)
 
   } catch (err) {

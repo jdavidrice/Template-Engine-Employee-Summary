@@ -2,7 +2,11 @@
 [![GitHub license](https://img.shields.io/github/license/jdavidrice/Template-Engine-Employee-Summary)](https://github.com/jdavidrice/Template-Engine-Employee-Summary/blob/master/LICENSE)
 ## Description 
 
-This application is a software engineering team generator that runs from the command line. The application will prompt the user for information about the team manager and then information about the team members. The user can input any number of team members, and they may be a mix of engineers and interns. This project must also pass all unit tests. When the user has completed building the team, the application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user.
+This application is a software engineering team generator that runs from the command line. The application prompts the user for information about the team manager and then information about the team members. The user can input any number of team members, and they may be a mix of engineers and interns. When the user has completed building the team, the application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user.
+
+![Sample of Generated Webpage](images/template_engine_pic.png)
+
+[Walkthrough Video](https://drive.google.com/file/d/1V-DFStiBJJkcbQR0fLIoxHJhMj3fQeqE/view)
 
 ## Table of Contents
 
@@ -28,13 +32,13 @@ $ npm install inquirer
 
 ## Usage 
 
-1. Use the following command to start the process:
+1.  Use the following command to start the process:
 ```
 $ node app.js
 ```
-2. Answer the question prompts as completely as possible. 
+2.  Answer the question prompts as completely as possible. 
 
-3. Your generated team.html file will be created in the output folder. 
+3.  Your generated team.html file will be created in the output folder. 
 
 *   [Return to Top](#Template-Engine-Employee-Summary)
 
@@ -78,7 +82,7 @@ SOFTWARE.
 
   Jeremy Rice
 
-* [Return to Top](#Template-Engine-Employee-Summary)
+*   [Return to Top](#Template-Engine-Employee-Summary)
 
 ## Tests
 
